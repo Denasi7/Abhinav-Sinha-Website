@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  font-family: var(--font-poppins), "Segoe UI", sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-poppins), "Segoe UI", sans-serif;
+}
+
+@theme inline {
+  --font-sans: var(--font-poppins);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
