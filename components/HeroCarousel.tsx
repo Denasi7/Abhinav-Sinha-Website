@@ -95,7 +95,10 @@ export default function HeroCarousel() {
               date: item.date ?? undefined,
               location: item.location ?? undefined,
               textPosition: normalizePosition(item.textPosition),
-              displaySeconds: Math.min(60, Math.max(2, Number(item.displaySeconds) || 4)),
+              displaySeconds: Math.min(
+                60,
+                Math.max(2, Number(item.displaySeconds) || 4),
+              ),
               sortOrder: Number(item.sortOrder) || 0,
               link: item.link ?? undefined,
             };
@@ -169,7 +172,7 @@ export default function HeroCarousel() {
       setSlideIndex(1);
 
       requestAnimationFrame(() =>
-        requestAnimationFrame(() => setAnimate(true))
+        requestAnimationFrame(() => setAnimate(true)),
       );
     }
 
@@ -178,7 +181,7 @@ export default function HeroCarousel() {
       setSlideIndex(banners.length);
 
       requestAnimationFrame(() =>
-        requestAnimationFrame(() => setAnimate(true))
+        requestAnimationFrame(() => setAnimate(true)),
       );
     }
   };
@@ -192,7 +195,10 @@ export default function HeroCarousel() {
 
   if (loading) {
     return (
-      <section className="relative h-[600px] overflow-hidden bg-gray-200 sm:h-[500px]" aria-busy="true">
+      <section
+        className="relative aspect-[375/577] overflow-hidden bg-gray-200 sm:aspect-[1728/740]"
+        aria-busy="true"
+      >
         <div className="absolute inset-0 animate-pulse bg-gray-200" />
         <div className="absolute left-8 top-1/2 w-[300px] -translate-y-1/2">
           <div className="h-8 w-3/4 animate-pulse rounded bg-gray-300" />
@@ -208,7 +214,7 @@ export default function HeroCarousel() {
 
   return (
     <section
-      className="relative h-[600px] overflow-hidden sm:h-[500px]"
+      className="relative aspect-[375/577] overflow-hidden sm:aspect-[1728/740]"
       aria-label="Featured events"
       aria-roledescription="carousel"
       onMouseEnter={() => setPaused(true)}
@@ -229,13 +235,20 @@ export default function HeroCarousel() {
           const isFirstBanner = b.id === banners[0]?.id;
 
           return (
-            <div key={`${b.id}-${renderedIndex}`} className="relative h-full min-w-full overflow-hidden">
+            <div
+              key={`${b.id}-${renderedIndex}`}
+              className="relative h-full min-w-full overflow-hidden"
+            >
               <Image
                 src={b.mobileImage ?? b.image}
                 alt={b.title}
                 fill
                 sizes="100vw"
-                priority={banners.length === 1 ? renderedIndex === 0 : renderedIndex === 1}
+                priority={
+                  banners.length === 1
+                    ? renderedIndex === 0
+                    : renderedIndex === 1
+                }
                 className="object-cover sm:hidden"
               />
 
@@ -244,29 +257,69 @@ export default function HeroCarousel() {
                 alt={b.title}
                 fill
                 sizes="100vw"
-                priority={banners.length === 1 ? renderedIndex === 0 : renderedIndex === 1}
+                priority={
+                  banners.length === 1
+                    ? renderedIndex === 0
+                    : renderedIndex === 1
+                }
                 className="hidden object-cover sm:block"
               />
 
               <div className="absolute left-8 right-4 top-12 flex flex-col sm:hidden">
-                <h2 className="text-[18px] font-bold text-[#B05709]">{b.title}</h2>
-                {b.description && <p className="mt-1 max-w-[300px] text-[18px] text-[#2F2B36]">{b.description}</p>}
-                {b.date && <p className="mt-2 text-xs font-semibold text-[#2F2B36]">{b.date}</p>}
-                {b.location && <p className="text-xs font-semibold text-[#2F2B36]">{b.location}</p>}
+                <h2 className="text-[18px] font-bold text-[#B05709]">
+                  {b.title}
+                </h2>
+                {b.description && (
+                  <p className="mt-1 max-w-[300px] text-[18px] text-[#2F2B36]">
+                    {b.description}
+                  </p>
+                )}
+                {b.date && (
+                  <p className="mt-2 text-xs font-semibold text-[#2F2B36]">
+                    {b.date}
+                  </p>
+                )}
+                {b.location && (
+                  <p className="text-xs font-semibold text-[#2F2B36]">
+                    {b.location}
+                  </p>
+                )}
                 {!isFirstBanner && (
-                  <Link href={href} className="mt-3 w-fit rounded-full bg-[#EA8023] px-6 py-2.5 text-xs font-light text-white transition-colors hover:bg-[#BBA7FA]">
+                  <Link
+                    href={href}
+                    className="mt-3 w-fit rounded-full bg-[#EA8023] px-6 py-2.5 text-xs font-light text-white transition-colors hover:bg-[#BBA7FA]"
+                  >
                     Read More
                   </Link>
                 )}
               </div>
 
-              <div className={`absolute top-1/2 hidden max-w-md -translate-y-1/2 flex-col sm:flex ${positionClasses[b.textPosition]}`}>
-                <h2 className="text-[34px] font-bold text-[#B05709]">{b.title}</h2>
-                {b.description && <p className="mt-2 text-[22px] text-[#2F2B36]">{b.description}</p>}
-                {b.date && <p className="mt-4 text-[18px] font-bold text-[#2F2B36]">{b.date}</p>}
-                {b.location && <p className="mt-2 max-w-[300px] text-[18px] font-bold text-[#2F2B36]">{b.location}</p>}
+              <div
+                className={`absolute top-1/2 hidden max-w-md -translate-y-1/2 flex-col sm:flex ${positionClasses[b.textPosition]}`}
+              >
+                <h2 className="text-[34px] font-bold text-[#B05709]">
+                  {b.title}
+                </h2>
+                {b.description && (
+                  <p className="mt-2 text-[22px] text-[#2F2B36]">
+                    {b.description}
+                  </p>
+                )}
+                {b.date && (
+                  <p className="mt-4 text-[18px] font-bold text-[#2F2B36]">
+                    {b.date}
+                  </p>
+                )}
+                {b.location && (
+                  <p className="mt-2 max-w-[300px] text-[18px] font-bold text-[#2F2B36]">
+                    {b.location}
+                  </p>
+                )}
                 {!isFirstBanner && (
-                  <Link href={href} className="mt-4 w-fit rounded-full bg-[#EA8023] px-9 py-3 text-[18px] font-light text-white transition-colors duration-300 hover:bg-[#BBA7FA]">
+                  <Link
+                    href={href}
+                    className="mt-4 w-fit rounded-full bg-[#EA8023] px-9 py-3 text-[18px] font-light text-white transition-colors duration-300 hover:bg-[#BBA7FA]"
+                  >
                     Read More
                   </Link>
                 )}
