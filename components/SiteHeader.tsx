@@ -245,7 +245,7 @@ export default function SiteHeader({
         sticky ? "sticky top-0 z-50" : "relative z-50"
       }`}
     >
-      <div className="mx-auto flex h-[80px] max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex h-[80px] w-full items-center justify-between px-6 lg:px-50">
         <Link
           href="/"
           aria-label="Home"
