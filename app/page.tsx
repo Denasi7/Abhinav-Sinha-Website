@@ -18,7 +18,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroCarousel />
-      <StaticBanner
+      {/* <StaticBanner
         desktopImage="/home/desktop-qr.png"
         mobileImage="/home/mobile-qr.png"
         alt="Banner 1"
@@ -28,7 +28,7 @@ export default async function HomePage() {
         desktopImage="/home/desktop-free-consultation.png"
         mobileImage="/home/mobile-free-consultation.png"
         alt="Banner 2"
-      />
+      /> */}
 
       {/* IFFCO SECTION */}
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-10 lg:h-[750px] lg:grid-cols-2 lg:gap-60 lg:py-0">
